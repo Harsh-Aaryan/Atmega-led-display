@@ -42,7 +42,7 @@ void display_count(uint8_t number) {
 
 int main(void) {
     initialize_ports();
-    uint8_t temp_count = 0;
+  //  uint8_t temp_count = 0;  remove 
 //functions
 //maybe create 2 files?
 //no 1 better 
