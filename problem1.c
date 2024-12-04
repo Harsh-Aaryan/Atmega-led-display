@@ -7,7 +7,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
- uint8_t count = 0;
+ unsigned char count = 0;
 
 //intitiazlizae buttons 
 //look example notes 
@@ -35,23 +35,43 @@ void initialize_ports(void) {
 }
 
 //if else works 
-void display_count(uint8_t number) {
+
+void display_count(unsigned char number) {
     
-    if(number & 0x01) PORTC |= (1 << PC0); 
-    else PORTC &= ~(1 << PC0);
-    if(number & 0x02) PORTD |= (1 << PD5); 
-    else PORTD &= ~(1 << PD5);
-    if(number & 0x04) PORTE |= (1 << PE5); 
-    else PORTE &= ~(1 << PE5);
-    if(number & 0x08) PORTD |= (1 << PD2); 
-    else PORTD &= ~(1 << PD2);
-    if(number & 0x10) PORTD |= (1 << PD4);
-     else PORTD &= ~(1 << PD4);
+    //led 1
+    if(number & 0x01) 
+    PORTC |= (1 << PC0); 
+    else 
+    PORTC &= ~(1 << PC0);
+    
+    //led2
+    if(number & 0x02)
+     PORTD |= (1 << PD5); 
+    else 
+    PORTD &= ~(1 << PD5);
+
+    //led3
+    if(number & 0x04) 
+    PORTE |= (1 << PE5); 
+    else
+     PORTE &= ~(1 << PE5);
+
+    //led4
+    if(number & 0x08)
+     PORTD |= (1 << PD2); 
+    else 
+    PORTD &= ~(1 << PD2);
+
+    //led5
+    if(number & 0x10) 
+    PORTD |= (1 << PD4);
+     else 
+     PORTD &= ~(1 << PD4);
 }
 
 int main(void) {
     initialize_ports();
-  //  uint8_t temp_count = 0;  remove 
+  
 //functions
 //maybe create 2 files?
 //no 1 better 
