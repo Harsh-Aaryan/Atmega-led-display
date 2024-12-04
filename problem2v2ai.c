@@ -4,7 +4,7 @@
 #define F_CPU 16000000UL
 
 // Variable initialization
-const char message[] = "COMPENG3"; // 8 character message we want to display (COMPENG3)
+const char message[] = "COMPENG3"; // 8 character message 
 volatile uint8_t current_pos = 0; // Current character we're displaying
 volatile uint8_t is_playing = 0; // If the timer should be active or not
 volatile uint8_t fast_mode = 0; // If the timer is fast or not

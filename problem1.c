@@ -26,7 +26,6 @@ void initialize_ports(void) {
 
     // led outputs 
     //check with diagrram and project 1 
-    //z 
     DDRC |= (1 << PC0);   // led1
     DDRD |= (1 << PD5);   // led2
     DDRE |= (1 << PE5);   // led3
@@ -43,7 +42,7 @@ void display_count(unsigned char number) {
     PORTC |= (1 << PC0); 
     else 
     PORTC &= ~(1 << PC0);
-    
+
     //led2
     if(number & 0x02)
      PORTD |= (1 << PD5); 
