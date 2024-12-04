@@ -7,15 +7,18 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-volatile uint8_t count = 0;
+ uint8_t count = 0;
 
 //intitiazlizae buttons 
+//look example notes 
+//look previous code assembly 
+
 void initialize_ports(void) {
-    DDRA &= ~(1 << PA0);  // button1  - Increment
-    DDRA &= ~(1 << PA1);  // button2 - Decrement
-    DDRA &= ~(1 << PA2);  // button3 - Set Initial Count
-    DDRA &= ~(1 << PA3);  // button4 - Increment Initial
-    DDRE &= ~(1 << PE6);  // button5 - Reset
+    DDRA &= ~(1 << PA0);  // button1  -increment
+    DDRA &= ~(1 << PA1);  // button2 - decrement
+    DDRA &= ~(1 << PA2);  // button3 - initial Count
+    DDRA &= ~(1 << PA3);  // button4 - intital 
+    DDRE &= ~(1 << PE6);  // button5 - rest 
 
   //pull up 
     PORTA |= (1 << PA0) | (1 << PA1) | (1 << PA2) | (1 << PA3);
@@ -31,13 +34,19 @@ void initialize_ports(void) {
     DDRD |= (1 << PD4);   // led5
 }
 
+//if else works 
 void display_count(uint8_t number) {
     
-    if(number & 0x01) PORTC |= (1 << PC0); else PORTC &= ~(1 << PC0);
-    if(number & 0x02) PORTD |= (1 << PD5); else PORTD &= ~(1 << PD5);
-    if(number & 0x04) PORTE |= (1 << PE5); else PORTE &= ~(1 << PE5);
-    if(number & 0x08) PORTD |= (1 << PD2); else PORTD &= ~(1 << PD2);
-    if(number & 0x10) PORTD |= (1 << PD4); else PORTD &= ~(1 << PD4);
+    if(number & 0x01) PORTC |= (1 << PC0); 
+    else PORTC &= ~(1 << PC0);
+    if(number & 0x02) PORTD |= (1 << PD5); 
+    else PORTD &= ~(1 << PD5);
+    if(number & 0x04) PORTE |= (1 << PE5); 
+    else PORTE &= ~(1 << PE5);
+    if(number & 0x08) PORTD |= (1 << PD2); 
+    else PORTD &= ~(1 << PD2);
+    if(number & 0x10) PORTD |= (1 << PD4);
+     else PORTD &= ~(1 << PD4);
 }
 
 int main(void) {
