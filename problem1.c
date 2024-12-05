@@ -1,18 +1,16 @@
 //problem 1 
-// just a simple conversion 
-// have to check all 
-//test 
-//harsh 
+// just a simple conversion refer to project 1
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
  unsigned char count = 0;
 
-//intitiazlizae buttons 
+//intitiazlize buttons 
 //look example notes 
 //look previous code assembly 
 
+// this function will initialize the ports
 void initialize_ports(void) {
     DDRA &= ~(1 << PA0);  // button1  -increment
     DDRA &= ~(1 << PA1);  // button2 - decrement
@@ -35,6 +33,7 @@ void initialize_ports(void) {
 
 //if else works 
 
+// this function will display the count on the LEDs
 void display_count(unsigned char number) {
     
     //led 1
@@ -68,12 +67,11 @@ void display_count(unsigned char number) {
      PORTD &= ~(1 << PD4);
 }
 
+// the main function will run the program
 int main(void) {
     initialize_ports();
   
 //functions
-//maybe create 2 files?
-//no 1 better 
 //functions 
 //while loop
     while(1) {
